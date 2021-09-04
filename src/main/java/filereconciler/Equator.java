@@ -1,5 +1,5 @@
 package filereconciler;
 
-public interface Equator {
-    boolean equates(FileDetail firstFileDetail, FileDetail secondFileDetail);
+public interface Equator<T> {
+    boolean equates(T firstFileDetail, T secondFileDetail);
 }
