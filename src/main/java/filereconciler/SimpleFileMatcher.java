@@ -2,8 +2,8 @@ package filereconciler;
 
 public class SimpleFileMatcher {
 
-    public boolean matches(FileDetail left, FileDetail right) {
-        return left.size() == right.size()
-                && left.name().equals(right.name());
+    public boolean matches(FileDetail firstFileDetail, FileDetail secondFileDetail) {
+        return firstFileDetail.size() == secondFileDetail.size()
+                && firstFileDetail.name().equals(secondFileDetail.name());
     }
 }
