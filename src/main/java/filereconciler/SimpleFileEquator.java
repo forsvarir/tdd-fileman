@@ -1,8 +1,8 @@
 package filereconciler;
 
-public class SimpleFileMatcher {
+public class SimpleFileEquator {
 
-    public boolean matches(FileDetail firstFileDetail, FileDetail secondFileDetail) {
+    public boolean equates(FileDetail firstFileDetail, FileDetail secondFileDetail) {
         return firstFileDetail.size() == secondFileDetail.size()
                 && firstFileDetail.name().equals(secondFileDetail.name());
     }

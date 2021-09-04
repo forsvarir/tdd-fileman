@@ -5,48 +5,48 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SimpleFileMatcherTest {
+class SimpleFileEquatorTest {
 
-    SimpleFileMatcher fileMatcher;
+    SimpleFileEquator fileEquator;
 
     @BeforeEach
     void beforeEach() {
-        fileMatcher = new SimpleFileMatcher();
+        fileEquator = new SimpleFileEquator();
     }
 
     @Test
-    void nameDifferentSizeDifferent_noMatch() {
+    void equates_nameDifferentSizeDifferent_noMatch() {
         FileDetail firstFile = createFileDetail("name1", 0L);
         FileDetail secondFile = createFileDetail("name2", 111L);
 
-        assertThat(fileMatcher.matches(firstFile, secondFile)).isFalse();
+        assertThat(fileEquator.equates(firstFile, secondFile)).isFalse();
     }
 
     @Test
-    void nameDifferentSizeMatch_noMatch() {
+    void equates_nameDifferentSizeMatch_noMatch() {
         FileDetail firstFile = createFileDetail("name1", 111L);
         FileDetail secondFile = createFileDetail("name2", 111L);
 
-        assertThat(fileMatcher.matches(firstFile, secondFile)).isFalse();
+        assertThat(fileEquator.equates(firstFile, secondFile)).isFalse();
     }
 
     @Test
-    void nameMatchesSizeDifferent_noMatch() {
+    void equates_nameMatchesSizeDifferent_noMatch() {
         FileDetail firstFile = createFileDetail("name", 0L);
         FileDetail secondFile = createFileDetail("name", 111L);
 
-        assertThat(fileMatcher.matches(firstFile, secondFile)).isFalse();
+        assertThat(fileEquator.equates(firstFile, secondFile)).isFalse();
     }
 
     @Test
-    void nameAndSizeSame_matches() {
+    void equates_nameAndSizeSame_matches() {
         FileDetail firstFile = createFileDetail("name", 111L);
         FileDetail secondFile = createFileDetail("name", 111L);
 
-        assertThat(fileMatcher.matches(firstFile, secondFile)).isTrue();
+        assertThat(fileEquator.equates(firstFile, secondFile)).isTrue();
     }
 
     private FileDetail createFileDetail(String name, long size) {
-        return new FileDetail(name, size);
+        return new FileDetail(name, size, false, 0);
     }
 }
